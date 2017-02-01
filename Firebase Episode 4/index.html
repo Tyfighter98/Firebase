@@ -3,18 +3,30 @@
     <head>
       <meta charset="utf-8">
       <title>Firebase Web Quickstart</title>
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,500"
+      rel="stylesheet">
       <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
+      <link rel="stylesheet" href="style.css">
     </head>
     <body>
 
-      <!--Value-->
-      <pre id="object">
-      </pre>
+      <div class="container">
+        <input id="txtEmail" type="email" placeholder="Email">
 
-      <!--Child-->
-      <ul id="list">
+        <input id="txtPassword" type="password" placeholder="Password">
 
-      </ul>
+        <button id="btnLogin" class="btn btn-action">
+          Log in
+        </button>
+
+        <button id="btnSignUp" class="btn btn-secondary">
+          Sign Up
+        </button>
+
+        <button id="btnLogout" class="btn btn-action hide">
+          Log out
+        </button>
+      </div>
 
       <script src="app.js"></script>
 

@@ -11,34 +11,45 @@
   firebase.initializeApp(config);
 
   // Get Elements
-  const preObjects = document.getElementById('object');
-  const ulList = document.getElementById('list');
+  const txtEmail = document.getElementById('txtEmail');
+  const txtPassword = document.getElementById('txtPassword');
+  const btnLogin = document.getElementById('btnLogin');
+  const btnSignUp = document.getElementById('btnSignUp');
+  const btnLogout = document.getElementById('btnLogout');
 
-  // Create References
-  const dbRefObject = firebase.database().ref().child('object');
-  const dbRefList = dbRefObject.child('hobbies');
+  // Add Login Event
+  btnLogin.addEventListener('click', e => {
+    // Get email and pass
+    const email = txtEmail.value;
+    const pass = txtPassword.value;
+    const auth = firebase.auth();
 
-  // Sync Object Changes
-  dbRefObject.on('value', snap => {
-    preObjects.innerText = JSON.stringify(snap.val(), null, 3);
+    // Sign im
+    const promise = auth.signInWithEmailAndPassword(email, pass);
+    promise.catch(e => console.log(e.message));
   });
 
-  // Sync List Changes
-  dbRefList.on('child_added', snap => {
-    const li = document.createElement('li');
-    li.innerText = snap.val();
-    li.id = snap.key;
-    ulList.appendChild(li);
+  // Add Signup Event
+  btnSignUp.addEventListener('click', e => {
+    // Get email and pass
+    // TODO check for real email
+    const email = txtEmail.value;
+    const pass = txtPassword.value;
+    const auth = firebase.auth();
+
+    // Sign im
+    const promise = auth.createUserWithEmailAndPassword(email, pass);
+    promise.catch(e => console.log(e.message));
   });
 
-  dbRefList.on('child_changed', snap => {
-    const liChanged = document.getElementById('snap.key');
-    liChanged.innerText = snap.val();
-  });
-
-  dbRefList.on('child_removed', snap => {
-    const liToRemove = document.getElementById('snap.key');
-    liToRemove.remove();
+  // Add a realtime listner
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+    if (firebaseUser) {
+      console.log(firebaseUser);
+    }
+    else {
+      console.log('not logged in');
+    }
   });
 
 }());
