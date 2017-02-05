@@ -29,3 +29,10 @@
   top: 100px;
   left: 30px;
 }
+
+@media screen and (max-width: 1020px) {
+  .password, .action, .signup, .container, .signout {
+    float: none;
+    width: auto;
+  }
+}
