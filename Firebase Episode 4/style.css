@@ -30,7 +30,7 @@
   left: 30px;
 }
 
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1500px) {
   .password, .action, .signup, .container, .signout {
     float: none;
     width: auto;
