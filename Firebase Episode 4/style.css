@@ -34,5 +34,34 @@
   .password, .action, .signup, .container, .signout {
     float: none;
     width: auto;
+    font-size: 15px;
+  }
+
+  .action, .signup, .signout {
+    height: 40px;
+    width: 200px;
+  }
+
+  .password {
+    width: 200px;
+    left: 5px;
+  }
+
+  .email {
+    position: absolute;
+    width: 200px;
+    left: 5px;
+  }
+
+  .signup {
+    position: absolute;
+    top: 110px;
+    left: -8px;
+  }
+
+  .signout {
+    position: absolute;
+    top: 160px;
+    left: -8px;
   }
 }
